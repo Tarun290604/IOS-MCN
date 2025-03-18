@@ -1,0 +1,17 @@
+{
+   "info_type_id": "PmData",
+   "job_id":"pmLogger",
+   "job_owner": "console",
+   "job_definition": {
+      "filter": {
+         "sourceNames": [],
+         "measObjInstIds": [],
+         "measTypeSpecs": [],
+         "measuredEntityDns": []
+      },
+      "deliveryInfo": {
+         "topic": "pmreports",
+         "bootStrapServers": "kafka:9097"
+      }
+   }
+}

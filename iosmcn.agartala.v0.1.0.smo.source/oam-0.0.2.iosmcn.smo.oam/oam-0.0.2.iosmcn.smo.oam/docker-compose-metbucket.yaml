@@ -1,0 +1,31 @@
+#  ============LICENSE_START===============================================
+#  Copyright (C) 2024 Linux Foundation. All rights reserved.
+#  ========================================================================
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#       http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+#  ============LICENSE_END=================================================
+#
+
+networks:
+  smo:
+    external: true
+    name: smo
+
+services:
+  influxdb_cli: 
+    image: $INFLUXDB_IMAGE
+    container_name: influxdb_cli
+    environment:
+      INFLUXDB2_TOKEN: $INFLUXDB2_TOKEN
+    entrypoint: influx bucket create --skip-verify --name $TELEGRAF_INSTANCE --retention 30d --org $INFLUXDB2_ORG --host http://$INFLUXDB2_INSTANCE:8086 --token $INFLUXDB2_TOKEN
+    networks:
+      smo:

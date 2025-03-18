@@ -1,0 +1,251 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<performance-measure-dictionary xmlns="urn:o-ran-sc:yang:o-ran-sc-dictionaries">
+  <id>O=OpenAirInterface,DC=gNodeB,DC=PerformanceMeasureDictionary</id>
+  <dictionary-version>2023-09-12</dictionary-version>
+  <dictionary-schema-version>2023-09-08</dictionary-schema-version>
+  <vendor-software-product>
+    <vendor>Openairinterface Software Alliance</vendor>
+    <product>openairinterface5G</product>
+    <version>v2.0.1</version>
+  </vendor-software-product>
+  <supported-interfaces>
+    <management-interface-id>O1</management-interface-id>
+    <event-to-measure-definition-map>/md:measFile/md:measData/md:measInfo/md:measValue/md:r@p</event-to-measure-definition-map>
+  </supported-interfaces>
+  <supported-measures>
+    <performance-measure-definition-id>DRB.UEThpDl</performance-measure-definition-id>
+    <performance-measure-id>301</performance-measure-id>
+    <standard-reference>
+      <standards-definition-organization>3rd Generation Partnership Project</standards-definition-organization>
+      <standard-specification>Performance Management (PM); Performance measurements; Definitions and template</standard-specification>
+      <version-or-release>3GPP TS 32.404 V17.0.0 (2022-04)</version-or-release>
+      <clause>5.1.1.3.1</clause>
+    </standard-reference>
+    <measurement-name>Average DL UE throughput in gNB</measurement-name>
+    <description><![CDATA[
+      This measurement provides the average UE throughput in downlink. 
+      This measurement is intended for data bursts that are large enough to 
+      require transmissions to be split across multiple slots. The UE data 
+      volume refers to the total volume scheduled for each UE regardless if 
+      using only primary- or also supplemental aggregated carriers. The 
+      measurement is optionally split into subcounters per QoS level (mapped 
+      5QI or QCI in NR option 3) and subcounters per supported S-NSSAI.
+    ]]></description>
+    <collection-method>cumulative-counter</collection-method>
+    <trigger-or-condition><![CDATA[
+      This measurement is obtained according to the following formula based 
+      on the "ThpVolDl" and "ThpTimeDl" defined below. Separate counters are 
+      maintained for each mapped 5QI (or QCI for option 3) and for each 
+      supported S-NSSAI.
+    ]]></trigger-or-condition>
+    <measurement-unit>kbit/s</measurement-unit>
+    <measurement-object-type>double 32 bits with 1 digital digit</measurement-object-type>
+    <measurement-group>new radio distributed cell</measurement-group>
+    <measurement-context><![CDATA[
+      The measurement was executed under normal operational 
+      conditions. The operational status values was 'enabled'.
+    ]]></measurement-context>
+    <measurement-type>DRB.UEThpDl</measurement-type>
+    <measurement-object-class>_3gpp-common-managed-element/ManagedElement[id]/_3gpp-nr-nrm-gnbdufunction:GNBDUFunction[id]/3gpp-nr-nrm-nrcelldu:NRCellDU[id]</measurement-object-class>
+    <switching-technology>Circuit Switched</switching-technology>
+    <generation>5GS</generation>
+    <purpose>Optimization</purpose>
+  </supported-measures>
+
+  <supported-measures>
+    <performance-measure-definition-id>DRB.UEThpUl</performance-measure-definition-id>
+    <performance-measure-id>303</performance-measure-id>
+    <standard-reference>
+      <standards-definition-organization>3rd Generation Partnership Project</standards-definition-organization>
+      <standard-specification>Performance Management (PM); Performance measurements; Definitions and template</standard-specification>
+      <version-or-release>3GPP TS 32.404 V17.0.0 (2022-04)</version-or-release>
+      <clause>5.1.1.3.3</clause>
+    </standard-reference>
+    <measurement-name>Average UL UE throughput in gNB</measurement-name>
+    <description><![CDATA[
+      This measurement provides the average UE throughput in uplink. This 
+      measurement is intended for data bursts that are large enough to require 
+      transmissions to be split across multiple slots. The UE data volume 
+      refers to the total volume scheduled for each UE regardless if using 
+      only primary- or also supplemental aggregated carriers. The measurement 
+      is optionally split into subcounters per QoS level (mapped 5QI or QCI in
+      NR option 3) and subcounters per supported S-NSSAI.
+    ]]></description>
+    <collection-method>cumulative-counter</collection-method>
+    <trigger-or-condition><![CDATA[
+      This measurement is obtained according to the following formula based on 
+      the "ThpVolUl" and "ThpTimeUl" defined below. Separate counters are 
+      maintained for each mapped 5QI (or QCI for option 3) and for each 
+      supported S-NSSAI.
+    ]]></trigger-or-condition>
+    <measurement-unit>kbit/s</measurement-unit>
+    <measurement-object-type>double 32 bits with 1 digital digit</measurement-object-type>
+    <measurement-group>new radio distributed cell</measurement-group>
+    <measurement-context><![CDATA[
+      The measurement was executed under normal operational 
+      conditions. The operational status values was 'enabled'.
+    ]]></measurement-context>
+    <measurement-type>DRB.UEThpUl</measurement-type>
+    <measurement-object-class>_3gpp-common-managed-element/ManagedElement[id]/_3gpp-nr-nrm-gnbdufunction:GNBDUFunction[id]/3gpp-nr-nrm-nrcelldu:NRCellDU[id]</measurement-object-class>
+    <switching-technology>Circuit Switched</switching-technology>
+    <generation>5GS</generation>
+    <purpose>Optimization</purpose>
+  </supported-measures>
+  
+  
+  <supported-measures>
+    <performance-measure-definition-id>DRB.MeanActiveUeDl</performance-measure-definition-id>
+    <performance-measure-id>2301</performance-measure-id>
+    <standard-reference>
+      <standards-definition-organization>3rd Generation Partnership Project</standards-definition-organization>
+      <standard-specification>Performance Management (PM); Performance measurements; Definitions and template</standard-specification>
+      <version-or-release>3GPP TS 32.404 V17.0.0 (2022-04)</version-or-release>
+      <clause>5.1.1.23.1</clause>
+    </standard-reference>
+    <!-- already defined in the header 
+    <supported-interfaces>
+      <management-interface-id>O1</management-interface-id>
+      <event-to-measure-definition-map>??</event-to-measure-definition-map>
+      <event-to-alarm-definition-map>??</event-to-alarm-definition-map>
+    </supported-interfaces> -->
+    <!-- extensions should be avoided 
+    <extensions>
+         <key/>
+         <value/>
+    </extensions>
+    -->
+    <measurement-name>Number of Active UEs in the DL per cell</measurement-name>
+    <description><![CDATA[
+      This measurement provides the mean number of active DRBs for UEs in an 
+      NRCellDU. The measurement is optionally split into subcounters per 
+      QoS level (mapped 5QI or/and QCI in NR option 3) and 
+      subcounters per S-NSSAI. 
+    ]]></description>
+    <collection-method>cumulative-counter</collection-method>
+    <trigger-or-condition><![CDATA[
+      This measurement is defined according to measurement "Mean number of 
+      Active UEs in the DL per QoS level per cell" in TS 38.314 [29]. 
+      Separate counters are optionally maintained for each mapped 5QI 
+      (or/and QCI for option 3) and for each S-NSSAI. 
+    ]]></trigger-or-condition>
+    <measurement-unit>UEs</measurement-unit>
+    <measurement-object-type>double 32 bits with 1 digital digit</measurement-object-type>
+    <measurement-group>new radio distributed cell</measurement-group>
+    <measurement-context><![CDATA[
+      The measurement was executed under normal operational 
+      conditions. The operational status values was 'enabled'.
+    ]]></measurement-context>
+    <measurement-type>DRB.MeanActiveUeDl</measurement-type>
+    <measurement-object-class>_3gpp-common-managed-element/ManagedElement[id]/_3gpp-nr-nrm-gnbdufunction:GNBDUFunction[id]/3gpp-nr-nrm-nrcelldu:NRCellDU[id]</measurement-object-class>
+    <switching-technology>Circuit Switched</switching-technology>
+    <generation>5GS</generation>
+    <purpose>Optimization</purpose>
+  </supported-measures>
+  <supported-measures>
+    <performance-measure-definition-id>DRB.MaxActiveUeDl</performance-measure-definition-id>
+    <performance-measure-id>2302</performance-measure-id>
+    <standard-reference>
+      <standards-definition-organization>3rd Generation Partnership Project</standards-definition-organization>
+      <standard-specification>Performance Management (PM); Performance measurements; Definitions and template</standard-specification>
+      <version-or-release>3GPP TS 32.404 V17.0.0 (2022-04)</version-or-release>
+      <clause>5.1.1.23.2</clause>
+    </standard-reference>
+    <measurement-name>Max number of Active UEs in the DL per cell</measurement-name>
+    <description><![CDATA[
+      This measurement provides the max number of active DRBs for UEs in an 
+      NRCellDU.  The measurement is optionally split into subcounters per 
+      QoS level (mapped 5QI or/and QCI in NR option 3) and subcounters per 
+      S-NSSAI. 
+    ]]></description>
+    <collection-method>cumulative-counter</collection-method>
+    <trigger-or-condition><![CDATA[
+      This measurement is defined according to measurement "Max number of 
+      Active UEs in the DL per QoS level per cell" in TS 38.314 [29]. 
+      Separate counters are optionally maintained for each mapped 5QI 
+      (or/and QCI for option 3) and for each S-NSSAI. 
+    ]]></trigger-or-condition>
+    <measurement-unit>UEs</measurement-unit>
+    <measurement-object-type>unsigned 32 bits</measurement-object-type>
+    <measurement-group>new radio distributed cell</measurement-group>
+    <measurement-context><![CDATA[
+      The measurement was executed under normal operational 
+      conditions. The operational status values was 'enabled'.
+    ]]></measurement-context>
+    <measurement-type>DRB.MaxActiveUeDl</measurement-type>
+    <measurement-object-class>_3gpp-common-managed-element/ManagedElement[id]/_3gpp-nr-nrm-gnbdufunction:GNBDUFunction[id]/3gpp-nr-nrm-nrcelldu:NRCellDU[id]</measurement-object-class>
+    <switching-technology>Circuit Switched</switching-technology>
+    <generation>5GS</generation>
+    <purpose>Optimization</purpose>
+  </supported-measures>
+  <supported-measures>
+    <performance-measure-definition-id>DRB.MeanActiveUeUl</performance-measure-definition-id>
+    <performance-measure-id>2303</performance-measure-id>
+    <standard-reference>
+      <standards-definition-organization>3rd Generation Partnership Project</standards-definition-organization>
+      <standard-specification>Performance Management (PM); Performance measurements; Definitions and template</standard-specification>
+      <version-or-release>3GPP TS 32.404 V17.0.0 (2022-04)</version-or-release>
+      <clause>5.1.1.23.3</clause>
+    </standard-reference>
+    <measurement-name>Number of Active UEs in the UL per cell</measurement-name>
+    <description><![CDATA[
+      This measurement provides the mean number of active DRBs for UEs in an 
+      NRCellDU.  The measurement is optionally split into subcounters per QoS 
+      level (mapped 5QI or/and QCI in NR option 3) and subcounters per S-NSSAI. 
+    ]]></description>
+    <collection-method>cumulative-counter</collection-method>
+    <trigger-or-condition><![CDATA[
+      This measurement is defined according to measurement "Mean number of 
+      Active UEs in the UL per QoS level per cell" in TS 38.314 [29]. 
+      Separate counters are optionally maintained for each mapped 5QI (or/and 
+      QCI for option 3) and for each S-NSSAI. 
+    ]]></trigger-or-condition>
+    <measurement-unit>UEs</measurement-unit>
+    <measurement-object-type>double 32 bits with 1 digital digit</measurement-object-type>
+    <measurement-group>new radio distributed cell</measurement-group>
+    <measurement-context><![CDATA[
+      The measurement was executed under normal operational 
+      conditions. The operational status values was 'enabled'.
+    ]]></measurement-context>
+    <measurement-type>DRB.MeanActiveUeUl</measurement-type>
+    <measurement-object-class>_3gpp-common-managed-element/ManagedElement[id]/_3gpp-nr-nrm-gnbdufunction:GNBDUFunction[id]/3gpp-nr-nrm-nrcelldu:NRCellDU[id]</measurement-object-class>
+    <switching-technology>Circuit Switched</switching-technology>
+    <generation>5GS</generation>
+    <purpose>Optimization</purpose>
+  </supported-measures>
+  <supported-measures>
+    <performance-measure-definition-id>DRB.MaxActiveUeUl</performance-measure-definition-id>
+    <performance-measure-id>2304</performance-measure-id>
+    <standard-reference>
+      <standards-definition-organization>3rd Generation Partnership Project</standards-definition-organization>
+      <standard-specification>Performance Management (PM); Performance measurements; Definitions and template</standard-specification>
+      <version-or-release>3GPP TS 32.404 V17.0.0 (2022-04)</version-or-release>
+      <clause>5.1.1.23.4</clause>
+    </standard-reference>
+    <measurement-name>Max number of Active UEs in the UL per cell</measurement-name>
+    <description><![CDATA[
+      This measurement provides the max number of active DRBs for UEs in an 
+      NRCellDU.  The measurement is optionally split into subcounters per QoS 
+      level (mapped 5QI or/and QCI in NR option 3) and subcounters per S-NSSAI. 
+    ]]></description>
+    <collection-method>cumulative-counter</collection-method>
+    <trigger-or-condition><![CDATA[
+      This measurement is defined according to in RAN specification [x], 
+      measurement "Max number of Active UEs in the UL per QoS level per cell" 
+      in TS 38.314 [29]. Separate counters are optionally maintained for 
+      each mapped 5QI (or/and QCI for option 3) and for each S-NSSAI.
+    ]]></trigger-or-condition>
+    <measurement-unit>UEs</measurement-unit>
+    <measurement-object-type>unsigned 32 bits</measurement-object-type>
+    <measurement-group>new radio distributed cell</measurement-group>
+    <measurement-context><![CDATA[
+      The measurement was executed under normal operational 
+      conditions. The operational status values was 'enabled'.
+    ]]></measurement-context>
+    <measurement-type>DRB.MaxActiveUeUl</measurement-type>
+    <measurement-object-class>_3gpp-common-managed-element/ManagedElement[id]/_3gpp-nr-nrm-gnbdufunction:GNBDUFunction[id]/3gpp-nr-nrm-nrcelldu:NRCellDU[id]</measurement-object-class>
+    <switching-technology>Circuit Switched</switching-technology>
+    <generation>5GS</generation>
+    <purpose>Optimization</purpose>
+  </supported-measures>
+
+</performance-measure-dictionary>

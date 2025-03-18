@@ -1,0 +1,35 @@
+[submodule "deps/ves-collector"]
+	path = deps/ves-collector
+	url = https://github.com/onap/dcaegen2-collectors-ves.git
+[submodule "deps/sdnc-oam"]
+	path = deps/sdnc-oam
+	url = https://github.com/onap/sdnc-oam.git
+[submodule "deps/ranpm"]
+	path = deps/ranpm
+	url = https://github.com/o-ran-sc/nonrtric-plt-ranpm.git
+[submodule "deps/cp-gw"]
+	path = deps/cp-gw
+	url = https://github.com/o-ran-sc/portal-nonrtric-controlpanel.git
+[submodule "deps/ics"]
+	path = deps/ics
+	url = https://github.com/o-ran-sc/nonrtric-plt-informationcoordinatorservice.git
+[submodule "deps/atoken"]
+	path = deps/atoken
+	url = https://github.com/o-ran-sc/nonrtric.git
+	branch = j-release
+[submodule "deps/rappcatalogue"]
+	path = deps/rappcatalogue
+	url = https://gerrit.o-ran-sc.org/r/nonrtric/plt/rappcatalogue
+	branch = j-release
+[submodule "deps/dmaapmediator"]
+	path = deps/dmaapmediator
+	url = https://gerrit.o-ran-sc.org/r/nonrtric/plt/dmaapmediatorproducer
+	branch = j-release
+[submodule "deps/dmaapadapter"]
+	path = deps/dmaapadapter
+	url = https://gerrit.o-ran-sc.org/r/nonrtric/plt/dmaapadapter
+	branch = j-release
+[submodule "deps/a1policymanagementservice"]
+	path = deps/a1policymanagementservice
+	url = https://gerrit.o-ran-sc.org/r/nonrtric/plt/a1policymanagementservice
+	branch = j-release

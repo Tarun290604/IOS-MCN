@@ -1,0 +1,37 @@
+@startuml
+nwdiag {
+  
+  network host_net {
+      address = "0.0.0.0"
+      gateway [address = "0.0.0.0:4334" ];
+      gateway [address = "0.0.0.0:4334, 0.0.0.0:4335" ];
+      gateway [address = "0.0.0.0:4334, 0.0.0.0:4335, 0.0.0.0:443" ];
+      gateway [address = "0.0.0.0:4334, 0.0.0.0:4335, 0.0.0.0:443, 0.0.0.0:80" ];
+  }
+  network dmz {
+      address = "172.19.0.0/16"
+      flows [address = "172.19.0.5" ];
+      odlux [address = "172.19.0.4" ];
+      messages [address = "172.19.0.3" ];
+      gateway [address = "172.19.0.2" ];
+  }
+  network smo {
+      address = "172.18.0.0/16"
+      ves-collector [address = "172.18.0.6" ];
+      persistence [address = "172.18.0.2" ];
+      odlux [address = "172.18.0.8" ];
+      controller [address = "172.18.0.7" ];
+      zookeeper [address = "172.18.0.3" ];
+      messages [address = "172.18.0.5" ];
+      kafka [address = "172.18.0.4" ];
+  }
+  network dcn {
+      address = "172.20.0.0/16"
+      ves-collector [address = "172.20.0.4" ];
+      controller [address = "172.20.0.3" ];
+      gateway [address = "172.20.0.2" ];
+      o1-oai-adapter [address = "172.20.0.5" ];
+  }
+}
+
+@enduml

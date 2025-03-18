@@ -1,0 +1,14 @@
+.sec*
+.admin_token
+.json*
+*_gen.yaml
+rootCA*
+cert-*
+**/*.swp
+**/*.bolt
+*.sqlite3
+**/jwt.txt
+**/build
+.scannerwork
+.env
+sonar-project.properties

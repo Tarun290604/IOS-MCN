@@ -1,0 +1,6 @@
+projectKey=IOS-RAN
+serverUrl=http://localhost:9000
+serverVersion=25.2.0.102705
+dashboardUrl=http://localhost:9000/dashboard?id=IOS-RAN
+ceTaskId=66334d02-2e26-482e-adc9-8225b80eb10e
+ceTaskUrl=http://localhost:9000/api/ce/task?id=66334d02-2e26-482e-adc9-8225b80eb10e

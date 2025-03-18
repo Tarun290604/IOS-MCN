@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  o1-oai-adapter:
+    container_name: o1-oai-adapter
+    image: ${OAI_ADAPTER_REPOSITORY}${OAI_ADAPTER_IMAGE}
+    ports:
+      - "${OAI_ADAPTER_NETCONF_PORT}:830"
+      - "${OAI_ADAPTER_SFTP_PORT}:22"
+    labels: 
+      app: "o1-oai-adapter"
+      deploy: "o1-oai-adapter-deployment"
+    volumes:
+      - ./.ftp:/ftp
+      - ./config/${OAI_ADAPTER_CONFIG_FILE}:/adapter/config/config.json
+    extra_hosts:
+      - "${VES_HOST}"
+       

@@ -1,0 +1,77 @@
+diff --git a/fhi_lib/lib/src/xran_cb_proc.c b/fhi_lib/lib/src/xran_cb_proc.c
+index b35d55c..40466f8 100644
+--- a/fhi_lib/lib/src/xran_cb_proc.c
++++ b/fhi_lib/lib/src/xran_cb_proc.c
+@@ -55,7 +55,8 @@ void xran_timer_arm(struct rte_timer *tim, void* arg, void *p_dev_ctx)
+ 
+     if (xran_if_current_state == XRAN_RUNNING){
+         rte_timer_cb_t fct = (rte_timer_cb_t)arg;
+-        rte_timer_reset_sync(tim, 0, SINGLE, p_xran_dev_ctx->fh_init.io_cfg.timing_core, fct, p_dev_ctx);
++        // rte_timer_reset_sync(tim, 0, SINGLE, p_xran_dev_ctx->fh_init.io_cfg.timing_core, fct, p_dev_ctx);
++	fct(tim, p_dev_ctx);
+     }
+     MLogTask(PID_TIME_ARM_TIMER, t3, MLogTick());
+ }
+@@ -69,7 +70,8 @@ void xran_timer_arm_cp_dl(struct rte_timer *tim, void* arg, void *p_dev_ctx)
+ 
+     if (xran_if_current_state == XRAN_RUNNING){
+         rte_timer_cb_t fct = (rte_timer_cb_t)arg;
+-        rte_timer_reset_sync(tim, 0, SINGLE, tim_lcore, fct, p_dev_ctx);
++        // rte_timer_reset_sync(tim, 0, SINGLE, tim_lcore, fct, p_dev_ctx);
++	fct(tim, p_dev_ctx);
+     }
+     MLogTask(PID_TIME_ARM_TIMER, t3, MLogTick());
+ }
+@@ -83,7 +85,8 @@ void xran_timer_arm_cp_ul(struct rte_timer *tim, void* arg, void *p_dev_ctx)
+ 
+     if (xran_if_current_state == XRAN_RUNNING){
+         rte_timer_cb_t fct = (rte_timer_cb_t)arg;
+-        rte_timer_reset_sync(tim, 0, SINGLE, tim_lcore, fct, p_dev_ctx);
++        //rte_timer_reset_sync(tim, 0, SINGLE, tim_lcore, fct, p_dev_ctx);
++	fct(tim, p_dev_ctx);
+     }
+     MLogTask(PID_TIME_ARM_TIMER, t3, MLogTick());
+ }
+@@ -110,7 +113,8 @@ void xran_timer_arm_for_deadline(struct rte_timer *tim, void* arg,  void *p_dev_
+     p_xran_dev_ctx->cb_timer_ctx[p_xran_dev_ctx->timer_put %  MAX_CB_TIMER_CTX].tti_to_process = rx_tti;
+     if (xran_if_current_state == XRAN_RUNNING){
+         rte_timer_cb_t fct = (rte_timer_cb_t)arg;
+-        rte_timer_reset_sync(tim, 0, SINGLE, tim_lcore, fct, p_xran_dev_ctx);
++        // rte_timer_reset_sync(tim, 0, SINGLE, tim_lcore, fct, p_xran_dev_ctx);
++	fct(tim, p_dev_ctx);
+     }
+ 
+     MLogTask(PID_TIME_ARM_TIMER_DEADLINE, t3, MLogTick());
+@@ -143,7 +147,8 @@ void xran_timer_arm_user_cb(struct rte_timer *tim, void* arg,  void *p_ctx)
+ 
+     if (xran_if_current_state == XRAN_RUNNING){
+         rte_timer_cb_t fct = (rte_timer_cb_t)arg;
+-        rte_timer_reset_sync(tim, 0, SINGLE, tim_lcore, fct, p_sym_cb_ctx);
++        // rte_timer_reset_sync(tim, 0, SINGLE, tim_lcore, fct, p_sym_cb_ctx);
++	fct(tim, p_sym_cb_ctx);
+         if (++p_sym_cb_ctx->user_timer_put >= MAX_CB_TIMER_CTX)
+             p_sym_cb_ctx->user_timer_put = 0;
+     }
+@@ -157,7 +162,8 @@ void xran_timer_arm_ex(struct rte_timer *tim, void* CbFct, void *CbArg, unsigned
+ 
+     if (xran_if_current_state == XRAN_RUNNING){
+         rte_timer_cb_t fct = (rte_timer_cb_t)CbFct;
+-        rte_timer_reset_sync(tim, 0, SINGLE, tim_lcore, fct, CbArg);
++        // rte_timer_reset_sync(tim, 0, SINGLE, tim_lcore, fct, CbArg);
++	fct(tim, CbArg);
+     }
+     MLogTask(PID_TIME_ARM_TIMER, t3, MLogTick());
+ }
+diff --git a/fhi_lib/lib/src/xran_mem_mgr.c b/fhi_lib/lib/src/xran_mem_mgr.c
+index 3e401e6..401d4f8 100644
+--- a/fhi_lib/lib/src/xran_mem_mgr.c
++++ b/fhi_lib/lib/src/xran_mem_mgr.c
+@@ -86,7 +86,7 @@ xran_bm_init (void * pHandle, uint32_t * pPoolIndex, uint32_t nNumberOfBuffers,
+                         pXranCc, pXranCc->nXranPort, pXranCc->nIndex, pXranCc->nBufferPoolIndex, nNumberOfBuffers, nBufferSize);
+ 
+     pXranCc->p_bufferPool[pXranCc->nBufferPoolIndex] = rte_pktmbuf_pool_create(pool_name, nNumberOfBuffers,
+-                                                                               MBUF_CACHE, 0, nAllocBufferSize, rte_socket_id());
++                                                                               0, 0, nAllocBufferSize, rte_socket_id());
+ 
+     if(pXranCc->p_bufferPool[pXranCc->nBufferPoolIndex] == NULL){
+         rte_panic("rte_pktmbuf_pool_create failed [ handle %p %d %d ] [nPoolIndex %d] nNumberOfBuffers %d nBufferSize %d errno %s\n",

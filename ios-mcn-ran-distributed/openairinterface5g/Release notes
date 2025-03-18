@@ -1,0 +1,93 @@
+# Version Summary
+Version Number : v0.0.3 [tag: v0.0.3]
+Version Name: my-release-name
+Date: 12-06-2024 [dd-mm-yyyy]
+
+Projects / Repos Included in this release: Provide repos and links here
+
+## Release Summary :
+This release is meant to merge changes made by IOS-MCN-RAN-distributed team to the base code of OAI [2024-wk12]
+
+_release-name (like Agartala):  one line to say why this name. This part is optional_
+
+## Highlights:
+
+- Support for:
+  - Base DU Configuration for 2x2 MIMO Gen1 VVDN radio
+  - Base DU Configuration for 2x2 MIMO Gen3 VVDN radio
+  - Base DU Configuration 2x2 MIMO x310
+- Support for VVDN:
+  - Configuration that made Gen 1 work with OAI-RAN and SD-Core base code
+  - Configuration that made Gen 3 work with OAI-RAN and SD-Core base code
+  - Base Configuration of x310
+  
+- Throughput (between UE and gNB:
+   - Improved raw throughput measured using iperf3 to the expected numbers
+   
+- Fixes: 
+   - Jump in frame and slot numbers in fronthaul interface  
+   - This release also contains fixes to an issue that rendered DU crash
+	- 1x1 SISO - Bug fixes: Issue 3 Memory allocation in XRAN fails for 1x1 config
+				When trying 7.2 in 1x1 the code fails during memory initialization in XRAN.
+
+## Details:
+//Please add each sub-project level highlights here. You can consider to include all the sub projects part of this release. This for the completeness of the release notes. - remove this line from your final release notes
+
+ - Sub Project Track2 (RAN-Distributed)
+   * Support for 2x2 MIMO on VVDN Gen1, Gen3 and USRP x310 radios
+   * Support for VVDN Gen1 and Gen3 radios
+
+
+ 
+## Changelog
+This changelog is based on the [Previous Release name with version number](give-the-release-link).
+
+IOS MCN releases will provide the key use cases, integrations, and overall solutions for mobile communication network based on IOS MCN sub projects. 
+It will list all the respective sub project releases under the scope of each of the IOS MCN releases. 
+*You can get a detailed feature list of specific projects from the respective project release pages.*
+
+You can get all the sub project release details from the release mapping section below.
+
+## Sub Projects and release version mapping:
+This section gives the list of all the sub projects part of IOS MCN release. You can also find the respective release highlights, changelogs etc from the respective repositories
+
+**Core Projects** //section name is optional. In case you want to segregate
+| Project | Release Link |
+|--|--|
+| Name | [Version Number](release-link) |
+| Name | [Version Number](release-link) |
+| Name | [Version Number](release-link) |
+| Name | [Version Number](release-link) |
+
+ **Example Usecases Projects** //section name is optional. In case you want to segregate
+|Project|Release Link  |
+|--|--|
+| Name | [Version Number](release-link) |
+| Name | [Version Number](release-link) |
+| Name | [Version Number](release-link) |
+| Name | [Version Number](release-link) |
+
+#### Test Reports:
+Please find the release test details and reports [here](give-the-link)
+
+## How to use the Release:
+### Environment Requirements and Pre-requisites:
+This section provides all the env requirements and pre-requisites deploy IOS MCN release. 
+//Can provide the link to separate doc as needed. 
+
+### Steps to Use:
+This section provides all the steps to use this release. 
+//You can give all the links to installation steps, guides etc. You can also have sections for different ways of usage like binary usage, build usage etc.
+
+### Usage Notes:
+This section provides all the notes about this release usage, like anything specific aspects to be taken care / contraints like this release cannot be used for production etc
+
+## Documentation
+This section provides all the links to documentation for IOS MCN. 
+
+## License 
+This section provides the links to the licensing information. 
+ 
+## Issues and Suggestions
+Any Release related issues/suggestions/requirements/usecases, please raise [here](https://github.com/ios-mcn/ios-mcn/issues)
+For all other issues/suggestions related specific projects, please raise them to the respective project repo/issues.

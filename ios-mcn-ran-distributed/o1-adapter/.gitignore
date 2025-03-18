@@ -1,0 +1,13 @@
+src/config
+src/gnb-adapter
+src/log.log
+src/testcode
+src/run.sh
+
+integration/.ftp/
+integration/oam/
+
+docker/scripts/available-yangs/
+docker/scripts/yang/
+.github
+

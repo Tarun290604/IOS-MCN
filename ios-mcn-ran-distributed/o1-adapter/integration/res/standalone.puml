@@ -1,0 +1,15 @@
+@startuml
+nwdiag {
+  
+  network host_net {
+      address = "0.0.0.0"
+      o1-oai-adapter [address = "0.0.0.0:122" ];
+      o1-oai-adapter [address = "0.0.0.0:122, 0.0.0.0:1830" ];
+  }
+  network oai_integration_default {
+      address = "172.27.0.0/16"
+      o1-oai-adapter [address = "172.27.0.2" ];
+  }
+}
+
+@enduml

@@ -1,0 +1,48 @@
+# SPDX-License-Identifier: Apache-2.0
+# Copyright 2021 Intel Corporation
+# Copyright 2021 Open Networking Foundation
+
+# golangci-lint configuration used for CI
+run:
+  tests: true
+  timeout: 10m
+  skip-files:
+    - ".*\\.pb\\.go"
+  skip-dirs-use-default: true
+
+# all available settings of specific linters
+linters-settings:
+  govet:
+    # report about shadowed variables
+    check-shadowing: true
+    # settings per analyzer
+    settings:
+      printf: # analyzer name, run `go tool vet help` to see all analyzers
+        funcs: # run `go tool vet help printf` to see available settings for `printf` analyzer
+          - (github.com/golangci/golangci-lint/pkg/logutils.Log).Infof
+          - (github.com/golangci/golangci-lint/pkg/logutils.Log).Warnf
+          - (github.com/golangci/golangci-lint/pkg/logutils.Log).Errorf
+          - (github.com/golangci/golangci-lint/pkg/logutils.Log).Fatalf
+    # enable all analyzers
+    enable-all: true
+    disable:
+      - fieldalignment
+
+linters:
+  enable:
+    - goconst
+    - gofmt
+    - goimports
+    - govet
+    - ineffassign
+    - misspell
+    - nilerr
+    - nilnil
+    - unparam
+
+  disable:
+    - errcheck
+    - goerr113
+    - gosec
+    - staticcheck
+    - wsl

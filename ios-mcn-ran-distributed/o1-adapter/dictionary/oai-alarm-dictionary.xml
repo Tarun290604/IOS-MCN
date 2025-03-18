@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<alarm-dictionary xmlns="urn:o-ran-sc:yang:o-ran-sc-dictionaries">
+  <id>O=OpenAirInterface,DC=gNodeB,DC=AlarmDictionary</id>
+  <dictionary-version>2023-09-12</dictionary-version>
+  <dictionary-schema-version>2023-09-08</dictionary-schema-version>
+  <vendor-software-product>
+    <vendor>Openairinterface Software Alliance</vendor>
+    <product>openairinterface5G</product>
+    <version>v2.0.1</version>
+  </vendor-software-product>
+  <supported-interfaces>
+    <management-interface-id>O1</management-interface-id>
+    <event-to-alarm-definition-map>ves:/event[commonEventHeader/domain='stndDefined']/stndDefinedFields/data/alarmId</event-to-alarm-definition-map>
+  </supported-interfaces>
+  <entity-type>_3gpp-common-managed-element:ManagedElement</entity-type>
+  <alarm-definitions>
+    <alarm-definition-id>internalConnectionLoss</alarm-definition-id>
+    <alarm-name>internalConnectionLoss</alarm-name>
+    <alarm-last-change>2023-09-14T12:00:00.000Z</alarm-last-change>
+    <alarm-change-type>ADDED</alarm-change-type>
+    <alarm-description>
+      <![CDATA[
+      The alarm 'internalConnectionLoss' indicates a connection loss between
+      the O1 NETCONF server (MnS Provider) component and the OpenAirInterface 
+      internal communication bus (e.g. Telnet). As a consequence all data 
+      related to the_3gpp-common-managed-element:ManagedElement retrieved 
+      by the O1 consumer (MnS consumer, management system) might be outdate. 
+      Once the problem is resolved the O1 NETCONF server will automatically
+      synchronize with the OpenAirInterface internal components and send a 
+      alarm clear message. This message should trigger the O1 Consumer 
+      (MnS Consumer, management system) a re-synchronization with this
+      OpenAirInterface instance. 
+      ]]>
+    </alarm-description>
+    <proposed-repair-actions>
+      <![CDATA[
+      - Check the NETCONF server logs.
+      - Reboot the NETCONF server component
+      - Create an Jira Issue with detailed description, information about the
+        environment, used versions and log files. 
+      ]]>
+    </proposed-repair-actions>
+    <clearing-type>AUTOMATIC</clearing-type>
+    <!-- not a standardized alarm 
+    <standard-reference>
+      <standards-definition-organization/>
+      <standard-specification/>
+      <version-or-release/>
+      <clause/>
+    </standard-reference> -->
+    <!-- already defined in the header 
+    <supported-interfaces>
+      <management-interface-id>O1</management-interface-id>
+      <event-to-alarm-definition-map>ves:/event[commonEventHeader/domain='stndDefined']/stndDefinedFields/data/alarmId</event-to-alarm-definition-map>
+    </supported-interfaces> -->
+    <!-- extensions should be avoided 
+    <extensions>
+      <key/>
+      <value/>
+    </extensions> -->
+  </alarm-definitions>
+  <alarm-definitions>
+    <alarm-definition-id></alarm-definition-id>
+    <alarm-name>loadDownlinkExceededWarning</alarm-name>
+    <alarm-last-change>2023-10-05T12:00:00.000Z</alarm-last-change>
+    <alarm-change-type>ADDED</alarm-change-type>
+    <alarm-description>
+      <![CDATA[
+      The alarm 'loadDownlinkExceededWarning' indicates that bandwidth 
+      consumption of UEs for downlink exceeds a threshold. 
+      This message should trigger the O1 Consumer 
+      (MnS Consumer, management system) to take action. 
+      ]]>
+    </alarm-description>
+    <proposed-repair-actions>
+      <![CDATA[
+      - Limit the number of UEs
+      - Lower the bandwidth per UE      
+      ]]>
+    </proposed-repair-actions>
+    <clearing-type>AUTOMATIC</clearing-type>
+  </alarm-definitions>
+  <probable-causes>
+    <probable-cause-code>internalConnectionLoss</probable-cause-code>
+    <probable-cause-description>
+      <![CDATA[
+      The O1 NETCONF Server function supervises the connection the 
+      OpenAirInterface internal message bus. This function detected a connection
+      loss.
+      ]]>
+    </probable-cause-description>
+  </probable-causes>
+  <probable-causes>
+    <probable-cause-code>loadDownlinkExceededWarning</probable-cause-code>
+    <probable-cause-description>
+      <![CDATA[
+      The O1 NETCONF Server function supervises the bandwidth downlink usage of UEs.
+      This function detected exceeded warning threshold.
+      ]]>
+    </probable-cause-description>
+  </probable-causes>
+</alarm-dictionary>

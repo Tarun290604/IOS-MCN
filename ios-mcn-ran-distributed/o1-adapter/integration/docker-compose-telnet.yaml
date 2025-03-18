@@ -1,0 +1,14 @@
+version: '3'
+services:
+  oai-telnet-server:
+    container_name: oai-telnet-server
+    image: ${OAI_TELNET_REPOSITORY}${OAI_TELNET_IMAGE}
+    labels: 
+      app: "o1-oai-telnet-server"
+      deploy: "o1-oai-adapter-deployment"
+    ports:
+      - ${OAI_TELNET_PORT}:9091
+    environment:
+      - OAI_CURRENT_LOAD=${OAI_CURRENT_LOAD}
+      - PYTHONUNBUFFERED=1
+  

@@ -1,0 +1,17 @@
+{
+  "groups": [
+    {
+      "name": "",
+      "type": "org.oran.datafile.oauth2.SecurityContext",
+      "sourceType": "org.oran.datafile.oauth2.SecurityContext"
+    }
+  ],
+  "properties": [
+    {
+      "name": "auth-token-filename",
+      "type": "java.lang.String",
+      "sourceType": "org.oran.datafile.oauth2.SecurityContext"
+    }
+  ],
+  "hints": []
+}

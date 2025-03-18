@@ -1,0 +1,55 @@
+#/*
+# * Licensed to the OpenAirInterface (OAI) Software Alliance under one or more
+# * contributor license agreements. See the NOTICE file for additional details.
+# * The OpenAirInterface Software Alliance licenses this file under the OAI Public License v1.1.
+# * http://www.openairinterface.org/?page_id=698
+# */
+
+#---------------------------------------------------------------------
+# Dockerfile for the Open-Air-Interface BUILD service
+#   Valid for Ubuntu 22.04
+#---------------------------------------------------------------------
+
+
+
+
+
+  FROM ghcr.io/ios-mcn-ran-distributed/ran-base:latest as ran-base
+
+  ARG BUILD_OPTION
+
+  
+  
+  # Remove existing files and set the working directory
+  RUN rm -Rf /oai-ran
+  WORKDIR /oai-ran
+  COPY . .
+  
+  RUN apt-get update && \
+  DEBIAN_FRONTEND=noninteractive apt-get upgrade --yes && \
+  DEBIAN_FRONTEND=noninteractive apt-get install --yes \
+      libnetconf2-dev \
+      libxml2-dev \
+      libssh-dev
+  
+  # Build all targets while combining options from both Dockerfiles
+  RUN /bin/sh oaienv && \
+      cd cmake_targets && \
+      mkdir -p log && \
+      ./build_oai -c --ninja \
+        --eNB --gNB --RU --UE --nrUE \
+        -t oran_fhlib_5g \
+        --build-lib "telnetsrv enbscope uescope nrscope" \
+        -w USRP -t Ethernet \
+        --build-e2 \
+        --cmake-opt "-DXAPP_MULTILANGUAGE=OFF -Dxran_LOCATION=/phy/phy/fhi_lib/lib" \
+        --noavx512 \
+        $BUILD_OPTION && \
+      # Check dependencies for executables
+      echo "---- ldd on executables ----" && \
+      ldd ran_build/build/*softmodem* ran_build/build/nr-cuup ran_build/build/oairu && \
+      echo "---- ldd on nr-softmodem ----" && \
+      ldd ran_build/build/nr-softmodem && \
+      echo "---- ldd on shared libraries ----" && \
+      ldd ran_build/build/*.so
+  

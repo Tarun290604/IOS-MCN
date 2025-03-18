@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="MeasDataCollection.xsl"?>
+<measCollecFile xmlns="http://www.3gpp.org/ftp/specs/archive/32_series/32.435#measCollec"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.3gpp.org/ftp/specs/archive/32_series/32.435#measCollec http://www.3gpp.org/ftp/specs/archive/32_series/32.435#measCollec">
+	<fileHeader fileFormatVersion="32.435 V7.0" vendorName="@vendor@" dnPrefix="DC=openairinterface.org">
+		<fileSender localDn="ManagedElement=@node-id@" elementType="GNBDU"/>
+		<measCollec beginTime="@start-time@"/>
+	</fileHeader>
+	<measData>
+		<managedElement localDn="ManagedElement=@node-id@" userLabel=""/>
+		<measInfo>
+			<job jobId="1"/>
+			<granPeriod duration="PT@log-period@S" endTime="@end-time@"/>
+			<repPeriod duration="P1D"/>
+			<measType p="1">DRB.MeanActiveUeDl</measType>
+			<measType p="2">DRB.MaxActiveUeDl</measType>
+			<measType p="3">DRB.MeanActiveUeUl</measType>
+			<measType p="4">DRB.MaxActiveUeUl</measType>
+			<measType p="5">RRU.PrbTotDl</measType>
+			<measType p="6">DRB.UEThpDl</measType>
+			<measType p="7">DRB.UEThpUl</measType>
+			<measValue measObjLdn="DuFunction=@du-id@,CellId=@cell-id@">
+				<r p="1">@mean-active-ue@</r>
+				<r p="2">@max-active-ue@</r>
+				<r p="3">@mean-active-ue@</r>
+				<r p="4">@max-active-ue@</r>
+				<r p="5">@load-avg@</r>
+				<r p="6">@ue-thp-dl@</r>
+				<r p="7">@ue-thp-ul@</r>
+				@suspect@
+			</measValue>
+		</measInfo>
+	</measData>
+	<fileFooter>
+		<measCollec endTime="@end-time@"/>
+	</fileFooter>
+</measCollecFile>

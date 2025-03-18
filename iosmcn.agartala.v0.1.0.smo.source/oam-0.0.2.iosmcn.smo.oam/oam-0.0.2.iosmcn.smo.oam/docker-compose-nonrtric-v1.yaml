@@ -1,0 +1,57 @@
+# SPDX-License-Identifier: GPL-2.0-only
+
+# no more versions needed! Compose spec supports all features w/o a version
+services:
+  rapp-catalog:
+    image: ${RAPP_CATALOG_IMAGE}
+    container_name: rapp-catalog
+    hostname: catalog
+    environment:
+      ALLOW_HTTP: ${RAPP_CATALOG_ALLOW_HTTP}
+    ports:
+      - 9196:9196
+      - 9096:9096
+    networks:
+      smo:
+  a1pms:
+    image: ${A1PMS_IMAGE}
+    container_name: a1pms
+    hostname: a1pms
+    volumes:
+      - ./config/a1pms/application_configuration.json:/opt/app/policy_agent/data/application_configuration.json
+    ports:
+      - 8081:8081
+      - 8043:8043
+    networks:
+      smo:
+  dmaap-adapter:
+    image: ${DMAAP_ADAPTER_IMAGE}
+    container_name: dmapp-adapter
+    hostname: adapter
+    volumes:
+      - ./config/dmaap-adapter/application.yaml:/opt/app/dmaap-adapter-service/config/application.yaml
+      - ./config/dmaap-adapter/application_configuration.json:/opt/app/dmaap-adapter-service/data/application_configuration.json
+    ports:
+      - 9086:8084
+      - 9087:8435
+    networks:
+      smo:
+  dmaap-mediator:
+    image: ${DMAAP_MEDIATOR_IMAGE}
+    container_name: dmapp-mediator
+    hostname: mediator
+    ports:
+      - 8885:8085
+      - 8985:8185
+    environment:
+      INFO_COORD_ADDR: ${INFO_COORD_ADDR}
+      DMAAP_MR_ADDR: ${DMAAP_MR_ADDR}
+      LOG_LEVEL: ${DMAAP_MEDIATOR_LOG_LEVEL}
+      INFO_PRODUCER_HOST: ${INFO_PRODUCER_HOST}
+      INFO_PRODUCER_PORT: ${INFO_PRODUCER_PORT}
+    networks:
+      smo:
+
+networks:
+  smo:
+    external: true

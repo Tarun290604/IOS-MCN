@@ -1,0 +1,51 @@
+version: '3.8'
+services:
+    gnb-cucp:
+        image: ghcr.io/ios-mcn-ran-distributed/ios-mcn-gnb:latest
+        privileged: true
+        container_name: gnb-cucp
+        network_mode: host
+        volumes:
+          - ../../../targets/PROJECTS/GENERIC-NR-5GC/CONF/gnb-cucp.sa.f1-e1.iisc.conf:/opt/oai-gnb/etc/gnb.conf
+        healthcheck:
+            test: /bin/bash -c "pgrep nr-softmodem"
+            interval: 10s
+            timeout: 5s
+            retries: 5
+
+    gnb-cuup:
+        image: ghcr.io/ios-mcn-ran-distributed/ios-mcn-cuup:latest
+        privileged: true
+        container_name: gnb-cuup
+        network_mode: host
+        volumes:
+          - ../../../targets/PROJECTS/GENERIC-NR-5GC/CONF/gnb-cuup.sa.f1-e1.iisc.conf:/opt/oai-gnb/etc/gnb.conf
+        depends_on:
+          - gnb-cucp 
+        healthcheck:
+            test: /bin/bash -c "pgrep nr-cuup"
+            interval: 10s
+            timeout: 5s
+            retries: 5
+
+    gnb-du:
+        image: ghcr.io/ios-mcn-ran-distributed/ios-mcn-gnb:latest
+        privileged: true
+        container_name: gnb-du
+        environment:
+          USE_ADDITIONAL_OPTIONS: --thread-pool 12,13,14,15 --telnetsrv --telnetsrv.shrmod o1
+        network_mode: host
+        volumes:
+          - /sys/bus/pci/drivers:/sys/bus/pci/drivers 
+          - /sys/kernel/mm/hugepages:/sys/kernel/mm/hugepages
+          - /sys/devices/system/node:/sys/devices/system/node
+          - /dev:/dev
+          - ../../../targets/PROJECTS/GENERIC-NR-5GC/CONF/gnb-du.sa.band78.273PRB.1x1-f1-e1-vvdn_gen3.iisc.conf:/opt/oai-gnb/etc/gnb.conf
+        depends_on:
+          - gnb-cucp
+          - gnb-cuup 
+        healthcheck:
+            test: /bin/bash -c "pgrep nr-nrsoftmodem"
+            interval: 10s
+            timeout: 5s
+            retries: 5
